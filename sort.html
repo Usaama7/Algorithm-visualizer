@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/pathfinding.css" />
+    <link rel="icon" href="../img/logo.png" >
+	
+	<title>Sorting Visualizer</title>
+
+	<!-- linking style.css -->
+	<link href="style.css" rel="stylesheet" />
+	<!-- linking index.js -->
+
+</head>
+
+<!-- body -->
+<body >
+	<div class="overlay">
+        <nav class="content">
+            <div class="mobile-logo">
+                <br />
+                <h1>
+                    <a href="../index.html">Algo<span>Visualization</span></a>
+                </h1>
+            </div>
+            <div class="logo">
+                <a href="../index.html">Algo<span>Visualization</span></a>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="#">
+                        <select name="algo" id="algo">
+                            <option value="" disabled selected>
+                                Choose Algorithm
+                            </option>
+                            <option value="bfs">
+                                BREADTH FIRST SEARCH
+                            </option>
+                            <option value="dfs">
+                                DEPTH FIRST SEARCH
+                            </option>
+
+                            <option value="dijkstra">
+                                DIJKSTRA ALGORITHM
+                            </option>
+                            <option value="best">
+                                BEST FIRST SEARCH
+                            </option>
+                            <option value="astar">
+                                A* ALGORITHM
+                            </option>
+                        </select>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><button id="visualize" style="color: aqua">
+                            VISUALIZE
+                        </button></a>
+                </li>
+
+                <li>
+                    <a href="#"><button id="rectangular-maze">
+                            BUILT MAZE
+                        </button></a>
+                </li>
+
+                <li>
+                    <a href="#"><button id="random-maze">
+                            RANDOM WALL MAZE
+                        </button></a>
+                </li>
+
+                <li>
+                    <a href="#"><button id="clear">CLEAR PATH</button></a>
+                </li>
+
+                <li>
+                    <a href="#"><button id="reset" style="color: red">
+                            RESET
+                        </button></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container heading">
+            <h1>
+                <i class="fas fa-wave-square"></i> Explore Awesome Pathfinding Algorithms !!
+            </h1>
+        </div>
+
+        <div class="notations container content">
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box1" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">Start</h2>
+            </div>
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box2" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">End</h2>
+            </div>
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box3" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">Wall</h2>
+            </div>
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box4" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">Visited</h2>
+            </div>
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box5" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">Path</h2>
+            </div>
+
+            <div class="notation" style="display: inline">
+                <canvas id="notation-box6" width="30" height="30" style="display: inline"></canvas>
+                <h2 class="notation-text">Weight</h2>
+            </div>
+            <div class="notation" style="display: inline">
+                <button class="btn-dark btn-hover tutorial-btn" id="tutorial" title="Page Walk through">
+                    Tutorial
+                </button>
+            </div>
+        </div>
+
+        <div class="notations container content">
+            <div class="notation">
+                <button class="btn-start tutorial-btn" id="start" title="Page Walk through">
+                    Place Source
+                </button>
+                <button class="btn-danger tutorial-btn" id="end" title="Page Walk through">
+                    Place Destination
+                </button>
+                <h2 class="notation-text content">Add Weights</h2>
+                <input type="checkbox" id="weight" name="weight" style="zoom: 1.9" />
+            </div>
+        </div>
+
+        <div class="container content">
+            <canvas id="main-canvas"></canvas>
+        </div>
+
+        <br />
+        <h2 class="container" id="visited"></h2>
+        <h2 class="container" id="result"></h2>
+        <br /><br /><br />
+    </div>
+	
+
+<section class="head">Selection Sort Visualization</section>
+<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+<section class="data-container"></section>
+	
+<!-- "Generate New Array" button -->
+<button class="btn1" onclick="generate()" id="Button1" >
+	Generate New Array</button>
+	
+<!-- "Selection Sort" button -->
+<button class="btn2"
+		onclick="SelectionSort(),disable()" id="Button2" >
+	Selection Sort</button>
+		<button class="btn2"
+		onclick="BubbleSort(),disable()" id="Button2" >
+	Merge Sort</button> 
+</body>
+
+
+
+<body >
+	<section class="head">Merge Sort Visualization</section>
+	<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+	<section class="data-container"></section>
+		
+	<!-- "Generate New Array" button -->
+	<button class="btn1" onclick="generate()" id="Button1" >
+		Generate New Array</button>
+		
+	<!-- "Selection Sort" button -->
+	<button class="btn2"
+			onclick="MergeSort(),disable()" id="Button2" >
+		Merge Sort</button>
+		<button class="btn2"
+		onclick="MergeSort(),disable()" id="Button2" >
+		Merge Sort</button>
+	</body>
+
+
+
+	<body >
+		<section class="head">Insertion Sort Visualization</section>
+		<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+		<section class="data-container"></section>
+			
+		<!-- "Generate New Array" button -->
+		<button class="btn1" onclick="generate()" id="Button1" >
+			Generate New Array</button>
+			
+		<!-- "Selection Sort" button -->
+		<button class="btn2"
+				onclick="InsertionSort(),disable()" id="Button2" >
+			Insertion Sort</button>
+        	<button class="btn2"
+				onclick="InsertionSort(),disable()" id="Button2" >
+			Bubble Sort</button>
+		</body>
+
+
+		<body >
+			<section class="head">Bubble Sort Visualization</section>
+			<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+			<section class="data-container"></section>
+				
+			<!-- "Generate New Array" button -->
+			<button class="btn1" onclick="generate()" id="Button1" >
+				Generate New Array</button>
+				
+			<!-- "Selection Sort" button -->
+			<button class="btn2"
+					onclick="BubbleSort(),disable()" id="Button2" >
+				Bubble Sort</button>
+				<button class="btn2"
+					onclick="InsertionSort(),disable()" id="Button2" >
+				Bubble Sort</button> 
+			</body>
+
+
+			<body >
+				<section class="head">Quick Sort Visualization</section>
+				<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+				<section class="data-container"></section>
+					
+				<!-- "Generate New Array" button -->
+				<button class="btn1" onclick="generate()" id="Button1" >
+					Generate New Array</button>
+					
+				<!-- "Selection Sort" button -->
+				<button class="btn2"
+						onclick="QuickSort(),disable()" id="Button2" >
+					Quick Sort</button>
+				<!----	<button class="btn2"
+						onclick="InsertionSort(),disable()" id="Button2" >
+					Bubble Sort</button> -->
+				</body>
+
+				<body >
+					<section class="head">Heap Sort Visualization</section>
+					<!-- <section>Enter Array Size: <input type="number" id="asize" value="5"> </section> -->
+					<section class="data-container"></section>
+						
+					<!-- "Generate New Array" button -->
+					<button class="btn1" onclick="generate()" id="Button1" >
+						Generate New Array</button>
+						
+					<!-- "Selection Sort" button -->
+					<button class="btn2"
+							onclick="HeapSort(),disable()" id="Button2" >
+						Heap Sort</button>
+						<button class="btn2"
+							onclick="InsertionSort(),disable()" id="Button2" >
+						Bubble Sort</button> -->
+					</body>
+
+
+><script>
+	async function SelectionSort(delay = 300) {
+    console.log('selection');
+let bars = document.querySelectorAll(".bar");
+// Assign 0 to min_idx
+var min_idx = 0;
+for (var i = 0; i < bars.length; i += 1) {
+
+	// Assign i to min_idx
+	min_idx = i;
+
+	// Provide darkblue color to the ith bar
+	bars[i].style.backgroundColor = "Red";
+	for (var j = i + 1; j < bars.length; j += 1) {
+
+	// Provide red color to the jth bar
+	bars[j].style.backgroundColor = "red";
+		
+	// To pause the execution of code for 300 milliseconds
+	await new Promise((resolve) =>
+		setTimeout(() => {
+		resolve();
+		}, 300)
+	);
+
+	// To store the integer value of jth bar to var1
+	var val1 = parseInt(bars[j].childNodes[0].innerHTML);
+
+	// To store the integer value of (min_idx)th bar to var2
+	var val2 = parseInt(bars[min_idx].childNodes[0].innerHTML);
+		
+	// Compare val1 & val2
+	if (val1 < val2) {
+		if (min_idx !== i) {
+
+		// Provide skyblue color to the (min-idx)th bar
+		bars[min_idx].style.backgroundColor = " rgb(24, 190, 255)";
+		}
+		min_idx = j;
+	} else {
+
+		// Provide skyblue color to the jth bar
+		bars[j].style.backgroundColor = " rgb(24, 190, 255)";
+	}
+	}
+
+	// To swap ith and (min_idx)th bar
+	var temp1 = bars[min_idx].style.height;
+	var temp2 = bars[min_idx].childNodes[0].innerText;
+	bars[min_idx].style.height = bars[i].style.height;
+	bars[i].style.height = temp1;
+	bars[min_idx].childNodes[0].innerText = bars[i].childNodes[0].innerText;
+	bars[i].childNodes[0].innerText = temp2;
+	
+	// To pause the execution of code for 300 milliseconds
+	await new Promise((resolve) =>
+	setTimeout(() => {
+		resolve();
+	}, 300)
+	);
+
+	// Provide skyblue color to the (min-idx)th bar
+	bars[min_idx].style.backgroundColor = " rgb(24, 190, 255)";
+
+	// Provide lightgreen color to the ith bar
+	bars[i].style.backgroundColor = " rgb(49, 226, 13)";
+}
+
+// To enable the button "Generate New Array" after final(sorted)
+document.getElementById("Button1").disabled = false;
+document.getElementById("Button1").style.backgroundColor = "#6f459e";
+
+// To enable the button "Selection Sort" after final(sorted)
+document.getElementById("Button2").disabled = false;
+document.getElementById("Button2").style.backgroundColor = "#6f459e";
+
+console.log('selection2');
+}
+
+
+function disable()
+{
+// To disable the button "Generate New Array"
+console.log('disable');
+document.getElementById("Button1").disabled = true;
+document.getElementById("Button1").style.backgroundColor = "#d8b6ff";
+
+// To disable the button "Selection Sort"
+document.getElementById("Button2").disabled = true;
+document.getElementById("Button2").style.backgroundColor = "#d8b6ff";
+
+
+    var n1 = m - l + 1;
+    var n2 = r - m;
+ 
+    // Create temp arrays
+    var L = new Array(n1);
+    var R = new Array(n2);
+ 
+    // Copy data to temp arrays L[] and R[]
+    for (var i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+ 
+    // Merge the temp arrays back into arr[l..r]
+ 
+    // Initial index of first subarray
+    var i = 0;
+ 
+    // Initial index of second subarray
+    var j = 0;
+ 
+    // Initial index of merged subarray
+    var k = l;
+ 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+ 
+    // Copy the remaining elements of
+    // L[], if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+ 
+    // Copy the remaining elements of
+    // R[], if there are any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+</script>
+<script src="./index.js">
+</script>
+</html>
